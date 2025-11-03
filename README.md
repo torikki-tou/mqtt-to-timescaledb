@@ -2,6 +2,10 @@
 
 Ingesting time series data into TimescaleDB using MQTT and EMQX | MQTT Timescale Integration
 
+## Fork
+
+It is a fork of [MQTT to TimescaleDB](https://github.com/emqx/mqtt-to-timescaledb) by [emqx](https://github.com/emqx). I have made some changes to the original code to upgrade project to modern component versions and to make it simpler. I also added some example Golang code. Actually, I was adjusting the code for my own use case and making a Proof of Concept and I wanted to share it with the community.
+
 ## Introduction
 
 This tutorial will show you how to use MQTT to ingest time series data into TimescaleDB. We will be using the [EMQX](https://www.emqx.io/) MQTT broker to publish and subscribe to messages. We will also be using the [TimescaleDB](https://www.timescale.com/) database to store the data.
@@ -19,37 +23,24 @@ This real-time monitoring and analysis can help factory managers make data-drive
 
 | Name      | Version | Description                                                                      |
 | --------- | ------- | -------------------------------------------------------------------------------- |
-| [EMQX Enterprise](https://www.emqx.com/en/products/emqx)      | 5.0.3+  | MQTT broker used for message exchange between MQTT clients and the TimescaleDB. |
-| [MQTTX CLI](https://mqttx.app/cli) | 1.9.3+  | Command-line tool used to generate simulated data for testing.        |
-| [TimescaleDB](https://www.timescale.com/)     | latest-pg12+  | IIoT data storage and management, as well as providing time aggregation and analysis capabilities for Grafana.      |
-| [EMQX Exporter](https://github.com/emqx/emqx-exporter)      | 0.1 | Prometheus exporter for EMQX |
-| [Prometheus](https://prometheus.io/)   | v2.44.0  | Open-source systems monitoring and alerting toolkit.       |
-| [Grafana](https://grafana.com/)   | 9.5.1+  | Visualization platform utilized to display and analyze the collected data.       |
+| [EMQX](https://www.emqx.com)      | 6.0.0  | MQTT broker used for message exchange between MQTT clients and the TimescaleDB. |
+| [MQTTX CLI](https://mqttx.app/cli) | v1.12.1 | Command-line tool used to generate simulated data for testing.        |
+| [TimescaleDB](https://www.timescale.com/)     | 2.23.0-pg17 | IIoT data storage and management, as well as providing time aggregation and analysis capabilities for Grafana.      |
+| [EMQX Exporter](https://github.com/emqx/emqx-exporter)      | 0.2 | Prometheus exporter for EMQX |
+| [Prometheus](https://prometheus.io/)   | v3.7.3 | Open-source systems monitoring and alerting toolkit.       |
+| [Grafana](https://grafana.com/)   | 12.2 | Visualization platform utilized to display and analyze the collected data.       |
 
 ## How to use
 
-1. Init the submodule to get the EMQX Exporter  (Optional):
+Please make sure you have installed the [docker](https://www.docker.com/), and then running the following commands to start the demo:
 
-  ```bash
-  git submodule init
-  git submodule update
-  ```
+```bash
+docker-compose up -d
+```
 
-2. Please make sure you have installed the [docker](https://www.docker.com/), and then running the following commands to start the demo:
+> Use `just up` if you are a proud Justfile user.
 
-  ```bash
-  docker-compose up -d
-  ```
-
-  > You can quickly init submodule and start the demo by using the `make` command as well.
-
-3. Running the following commands to see the message from MQTTX:
-
-  ```bash
-  docker logs -f mqttx
-  ```
-
-4. If you want to view the energy data and EMQX Metrics in Grafana dashboard, you can open <http://localhost:3000> in your browser, and login with `admin:public`
+If you want to view the energy data and EMQX Metrics in Grafana dashboard, you can open <http://localhost:3000> in your browser, and login with `admin:public`
 
 ## License
 
