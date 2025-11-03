@@ -3,3 +3,6 @@ up:
 
 down:
 	docker compose down
+
+go-mock:
+	cd mock && go run .
