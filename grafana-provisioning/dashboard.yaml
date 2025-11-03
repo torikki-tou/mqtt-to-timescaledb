@@ -9,7 +9,7 @@ providers:
     orgI": 1
     type: "file"
   - name: EMQX
-    folder: "EMQX-Enterprise"
+    folder: "EMQX"
     folderUid: ""
     options:
       path: "/grafana-dashboard-emqx5-ee"

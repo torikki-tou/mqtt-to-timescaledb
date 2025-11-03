@@ -21,4 +21,4 @@ datasources:
       database: "iot_data"
       sslmode: 'disable'
       timescaledb: true
-      postgresVersion: 1200
+      postgresVersion: 1700
